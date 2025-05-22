@@ -1,0 +1,23 @@
+{
+  "name": "guia-2---triki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "triki.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulaEanDelgado/Guia-2---Triki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulaEanDelgado/Guia-2---Triki/issues"
+  },
+  "homepage": "https://github.com/PaulaEanDelgado/Guia-2---Triki#readme"
+}

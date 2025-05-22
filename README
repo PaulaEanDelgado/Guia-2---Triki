@@ -1,0 +1,3 @@
+Abrir consola y ejecutar npm install
+
+Para ejecutar las pruebas unitarias: ejecutar en consola npm test
