@@ -1,3 +1,4 @@
 Abrir consola y ejecutar npm install
 
 Para ejecutar las pruebas unitarias: ejecutar en consola npm test
+para ejecutar la aplicacion ejecutar en consola node main.js
