@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/PaulaEanDelgado/Guia-2---Triki/issues"
   },
-  "homepage": "https://github.com/PaulaEanDelgado/Guia-2---Triki#readme"
+  "homepage": "https://github.com/PaulaEanDelgado/Guia-2---Triki#readme",
+  "dependencies": {
+    "guia-2---triki": "file:"
+  }
 }
