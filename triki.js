@@ -84,8 +84,56 @@ function iniciarJuego() {
     });
   }
 
+  function reiniciarJuego() {
+    rl.question("¿Quieres jugar otra partida? (s/n): ", (respuesta)=>{
+      const resp1 = respuesta.toLowerCase();
+      if (resp1 != 's' ||resp1 != 'n') {
+        return reiniciarJuego()
+      }else{
+        if (resp1 === 's') {
+          tablero = crearTablero();
+          turnoActual = Object.keys(simbolos[0]);
+          mostrarTablero();
+          preguntarJugada()
+        }else{
+          console.log('Gracias')
+          rl.close
+        }
+      }
+    })
+  }
+
   function preguntarJugada() {
-    rl.question(`${turnoActual} (${simbolos[turnoActual]}), ingresa tu jugada (fila,columna): `, (entrada) => {
+    rl.question(`${turnoActual} (${simbolos[turnoActual]}), ingresa tu jugada (fila,columna, o "reset"): `, (entrada) => {
+
+      if(entrada.trim().toLowerCase() === "reset"){
+        rl.question("Está de acuerdo el jugador actual en reiniciar? (s/n): ", (respuesta1) =>{
+          if (respuesta1.toLowerCase() != 's') {
+            console.log("Reinicio cancelado, Se continua el juego");
+            return preguntarJugada();            
+          }
+
+          const otroJugador = Object.keys(simbolos).find(
+            (nombre) => nombre !== turnoActual 
+          )
+          rl.question(`¿Está deacuerdo ${otroJugador} en reiniciar? (s/n): `, (respuesta2) =>{
+              if (respuesta2.toLowerCase() != 's') {
+            console.log("Reinicio cancelado por el segundo jugador, Se continua el juego");
+            return preguntarJugada();            
+          }
+
+          tablero = crearTablero();
+
+          console.log('Ambos jugadores aceptaron! El tablero se ha reiniciado ')
+
+          mostrarTablero();
+          preguntarJugada();
+
+          })
+        })
+        return;
+      }
+
       const [fila, col] = entrada.split(',').map(Number);
 
       if (isNaN(fila) || isNaN(col) || fila < 0 || fila > 2 || col < 0 || col > 2) {
@@ -111,7 +159,7 @@ function iniciarJuego() {
 
       if (esEmpate(tablero)) {
         console.log("🤝 ¡Empate!");
-        return rl.close();
+        return reiniciarJuego();
       }
 
       turnoActual = turnoActual === Object.keys(simbolos)[0] ? Object.keys(simbolos)[1] : Object.keys(simbolos)[0];
